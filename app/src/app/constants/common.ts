@@ -1,3 +1,3 @@
 export abstract class CommonConstant {
-    public static API_URL = "http://localhost:8080/api/v1/";
+    public static API_URL = "https://deutsche-cms-api.azurewebsites.net/api/v1/";
 };
