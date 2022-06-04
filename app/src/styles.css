@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+.error {
+    color: red;
+}
+
+.icon {
+    margin-right: 10px;
+    cursor: pointer;
+    fill: #1368bd;
+}
+
+
+input, select {
+    padding: 5px;
+}
+
+button {
+    padding: 7px;
+    background-color: #1368bd;
+    color: white;
+    box-shadow: 0px 0px 5px #999;
+    border: none;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+}

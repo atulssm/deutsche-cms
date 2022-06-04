@@ -1,0 +1,31 @@
+.post-container {
+    border-bottom: 1px dashed #ccc;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.action-icon {
+    display: inline-block;
+    position: relative;
+}
+
+.action-icon .info-tip {
+
+    display: none;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #eee;
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 10;
+    width: 50px;
+    text-align: center;
+}
+
+.action-icon:hover .info-tip {
+    display: block;
+}

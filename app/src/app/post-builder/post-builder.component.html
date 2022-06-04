@@ -1,0 +1,22 @@
+<div>
+
+    <div>
+        Title <br />
+        <div class="error">{{this.errors.title}}</div>
+        <input type="text" style="padding:5px; width: 100%;" [(ngModel)]="form.title" />
+
+    </div>
+    <br />
+    <div>
+        Content <br />
+        <div class="error"> {{this.errors.postContent}}</div>
+        <textarea style="padding:5px; width: 100%;" rows="20" [(ngModel)]="form.postContent"></textarea>
+
+    </div>
+    <br />
+    <div>
+        <button (click)="save()">Save</button>
+        <button (click)="goToList()">Cancel</button>
+    </div>
+
+</div>

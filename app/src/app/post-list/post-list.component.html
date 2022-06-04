@@ -1,0 +1,73 @@
+<div style="border-bottom: 1px dashed; padding-bottom: 20px;">
+    <input type="text" [(ngModel)]="searchQuery" style="width: 300px;">
+    <button (click)="filter()">Search</button>
+
+    <span style="float: right;">
+        Sort By :
+        <select (change)="sort()" [(ngModel)]="sortBy">
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+        </select>
+    </span>
+</div>
+<div class="" *ngFor="let post of posts" class="post-container" style="">
+    <div>
+        <div style="position:absolute; right:0" *ngIf="userRole=='Admin' || userRole=='Super Admin'">
+            <a href="create/{{post.id}}" class="action-icon">
+                <svg style="width: 28px;" class="icon" xmlns="http://www.w3.org/2000/svg" title="Edit"
+                    viewBox="0 0 576 512">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                        d="M0 64C0 28.65 28.65 0 64 0H224V128C224 145.7 238.3 160 256 160H384V299.6L289.3 394.3C281.1 402.5 275.3 412.8 272.5 424.1L257.4 484.2C255.1 493.6 255.7 503.2 258.8 512H64C28.65 512 0 483.3 0 448V64zM256 128V0L384 128H256zM564.1 250.1C579.8 265.7 579.8 291 564.1 306.7L534.7 336.1L463.8 265.1L493.2 235.7C508.8 220.1 534.1 220.1 549.8 235.7L564.1 250.1zM311.9 416.1L441.1 287.8L512.1 358.7L382.9 487.9C378.8 492 373.6 494.9 368 496.3L307.9 511.4C302.4 512.7 296.7 511.1 292.7 507.2C288.7 503.2 287.1 497.4 288.5 491.1L303.5 431.8C304.9 426.2 307.8 421.1 311.9 416.1V416.1z" />
+                </svg>
+                <div class="info-tip">Edit</div>
+            </a>
+            <div class="action-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 28px;" class="icon"
+                    title="Delete">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                        d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM31.1 128H416V448C416 483.3 387.3 512 352 512H95.1C60.65 512 31.1 483.3 31.1 448V128zM111.1 208V432C111.1 440.8 119.2 448 127.1 448C136.8 448 143.1 440.8 143.1 432V208C143.1 199.2 136.8 192 127.1 192C119.2 192 111.1 199.2 111.1 208zM207.1 208V432C207.1 440.8 215.2 448 223.1 448C232.8 448 240 440.8 240 432V208C240 199.2 232.8 192 223.1 192C215.2 192 207.1 199.2 207.1 208zM304 208V432C304 440.8 311.2 448 320 448C328.8 448 336 440.8 336 432V208C336 199.2 328.8 192 320 192C311.2 192 304 199.2 304 208z" />
+                </svg>
+                <div class="info-tip">Delete</div>
+            </div>
+            <div class="action-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 24px;" class="icon"
+                    title="History" (click)="getHistory(post.id)">
+                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                        d="M256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C201.7 512 151.2 495 109.7 466.1C95.2 455.1 91.64 436 101.8 421.5C111.9 407 131.8 403.5 146.3 413.6C177.4 435.3 215.2 448 256 448C362 448 448 362 448 256C448 149.1 362 64 256 64C202.1 64 155 85.46 120.2 120.2L151 151C166.1 166.1 155.4 192 134.1 192H24C10.75 192 0 181.3 0 168V57.94C0 36.56 25.85 25.85 40.97 40.97L74.98 74.98C121.3 28.69 185.3 0 255.1 0L256 0zM256 128C269.3 128 280 138.7 280 152V246.1L344.1 311C354.3 320.4 354.3 335.6 344.1 344.1C335.6 354.3 320.4 354.3 311 344.1L239 272.1C234.5 268.5 232 262.4 232 256V152C232 138.7 242.7 128 256 128V128z" />
+                </svg>
+                <div class="info-tip">History</div>
+            </div>
+        </div>
+        <h2>{{post.title}}</h2>
+        <span style="margin-top: -20px;        display: block; margin-bottom: 10px;">By <b>{{post.author}} </b> at
+            <i>{{post.createdOn |
+                date:'dd/MM/yyyy'}}</i></span>
+    </div>
+    <div style="display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; text-align: justify;"> {{post.postContent}}</div>
+    <br />
+    <a routerLink="/post/{{post.id}}">Read Full</a>
+</div>
+
+<div style="position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: white;
+padding: 10px;
+box-shadow: 0px 0px 10px #999;
+width: 300px;" *ngIf="showHistory">
+    <span (click)="showHistory=false">Close</span>
+    <h1>History</h1>
+    <div *ngFor="let item of history">
+        {{item.title}}
+        <br>
+        {{item.createdOn}}
+    </div>
+</div>

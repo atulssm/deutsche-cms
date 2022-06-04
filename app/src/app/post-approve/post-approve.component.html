@@ -1,0 +1,19 @@
+<div>
+    <div *ngFor="let post of posts"
+        style="box-shadow: 0px 0px 5px #aaa; margin: 10px; padding: 10px; border-radius: 3px; ">
+
+        <h3>{{post.title}}</h3>
+
+        <div>{{post.postContent}}</div>
+        <br />
+        <div>
+            <button (click)="approve(post.id)">Approve</button>
+            <button (click)="reject(post.id)">Reject</button>
+        </div>
+    </div>
+
+
+    <div *ngIf="posts.length==0" style="text-align: center;">
+        There is no post pending to approve.
+    </div>
+</div>
